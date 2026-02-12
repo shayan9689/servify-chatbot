@@ -207,11 +207,14 @@ app.post('/v1/chat', async (req, res) => {
 });
 
 // -----------------------------------------------------------------------------
-// Start
+// Start (only when run directly; export app for Vercel serverless)
 // -----------------------------------------------------------------------------
-app.listen(PORT, () => {
-  console.log(`Servify Chatbot API (Node) running at http://127.0.0.1:${PORT}`);
-  console.log(`  GET  /v1/status   - health check`);
-  console.log(`  POST /v1/chat     - send message (body: { "message": "..." })`);
-  console.log(`  Docs: http://127.0.0.1:${PORT}/v1/status`);
-});
+module.exports = app;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Servify Chatbot API (Node) running at http://127.0.0.1:${PORT}`);
+    console.log(`  GET  /v1/status   - health check`);
+    console.log(`  POST /v1/chat     - send message (body: { "message": "..." })`);
+  });
+}

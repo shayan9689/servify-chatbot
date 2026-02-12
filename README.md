@@ -60,14 +60,21 @@ Full guide and examples: **[API.md](API.md)**.
 - Emergency phrases → fixed “call 911” response.
 - Answers limited to Servify Generations (services, booking, Pro, home care).
 
+## Deploy on Vercel
+
+1. Push to GitHub and connect repo to Vercel.
+2. In Vercel project **Settings → Environment Variables**, add `OPENAI_API_KEY` with your key.
+3. Deploy. API will be at `https://servify-chatbot.vercel.app/v1/status` and `/v1/chat`.
+
 ## Project layout
 
 ```
+api/index.js     # Vercel serverless entry
 backend/
   server.js      # Express app, prompt, OpenAI, safety
   package.json
-  .env.example
-  README.md
+vercel.json      # Routes all requests to /api
+package.json     # Root deps for Vercel
 API.md           # Developer integration guide
 README.md        # This file
 ```

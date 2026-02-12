@@ -6,5 +6,11 @@
     "start": "cd backend && npm start",
     "dev": "cd backend && npm run dev",
     "install:backend": "cd backend && npm install"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.0",
+    "openai": "^4.52.0"
   }
 }
